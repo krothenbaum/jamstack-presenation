@@ -61,18 +61,22 @@ export default class Presentation extends React.Component {
         transition={["zoom"]}
         transitionDuration={500}
         theme={theme}
-        contentWidth={1200}
+        contentWidth={1500}
       >
         {slides.map(slide => {
           const { content, backgroundImage, logoImg } = slide;
           if (!logoImg) {
             return (
               <Slide
-                transition={["fade"]}
+                transition={["slide"]}
                 bgColor="quartenary"
                 bgImage={backgroundImage ? backgroundImage.url : ""}
               >
-                <ReactMarkdown source={content} renderers={markdownRenderers} />
+                <ReactMarkdown
+                  source={content}
+                  renderers={markdownRenderers}
+                  escapeHtml={false}
+                />
               </Slide>
             );
           } else {
