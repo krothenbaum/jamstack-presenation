@@ -13,9 +13,8 @@ import createTheme from "spectacle/lib/themes/default";
 
 // Require CSS
 require("normalize.css");
+
 const StyledImage = styled(Image)`
-  /* /* display: inline;
-  margin: 0; */
   padding-top: 25%;
 
   ${ifProp(
