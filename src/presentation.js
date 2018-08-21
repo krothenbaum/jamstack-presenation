@@ -75,7 +75,7 @@ export default class Presentation extends React.Component {
                 <ReactMarkdown
                   source={content}
                   renderers={markdownRenderers}
-                  escapeHtml="false"
+                  escapeHtml={false}
                 />
               </Slide>
             );
