@@ -4,7 +4,7 @@ import { Heading } from "spectacle";
 
 const StyledHeading = styled(Heading)`
   & span {
-    color: #84a5c9;
+    color: #d9707b;
   }
 `;
 
@@ -13,7 +13,7 @@ const mdHeadings = ({ level, children }) => {
     <StyledHeading
       size={level}
       textColor={level < 3 ? "tertiary" : "secondary"}
-      margin={level !== 3 ? 32 : "32px 32px 32px 40%"}
+      margin={level !== 3 ? 32 : "0px 32px 32px 40%"}
       textFont="secondary"
       lineHeight={1.4}
       fit={level === 1}

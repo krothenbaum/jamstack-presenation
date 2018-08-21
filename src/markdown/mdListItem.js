@@ -3,7 +3,7 @@ import { Appear, ListItem } from "spectacle";
 
 const mdListItem = ({ children }) => (
   <Appear>
-    <ListItem padding={'16px 0'} textSize={"3rem"} >{children}</ListItem>
+    <ListItem padding={'16px 0'}>{children}</ListItem>
   </Appear>
 );
 

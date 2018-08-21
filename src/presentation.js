@@ -91,7 +91,7 @@ export default class Presentation extends React.Component {
                     <StyledImage
                       margin={0}
                       src={logoImg.url}
-                      width={"80%"}
+                      width={"60%"}
                       gatsby={logoImg.fileName === "gatsby.svg"}
                     />
                   </Fill>
@@ -99,6 +99,7 @@ export default class Presentation extends React.Component {
                     <ReactMarkdown
                       source={content}
                       renderers={markdownRenderers}
+                      escapeHtml={false}
                     />
                   </Fill>
                 </Layout>
