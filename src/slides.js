@@ -8,6 +8,7 @@ const GET_SLIDES = gql`
     slideses(where: { status: PUBLISHED }, orderBy: order_ASC) {
       title
       content
+      notes
       backgroundImage {
         url
       }

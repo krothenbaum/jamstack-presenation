@@ -3,10 +3,10 @@ import ReactMarkdown from "react-markdown";
 import styled, { css } from "styled-components";
 import { ifProp } from "styled-tools";
 
-import { mdHeadings, mdText, mdList, mdListItem } from "./markdown";
+import { mdHeadings, mdText, mdLink, mdList, mdListItem } from "./markdown";
 
 // Import Spectacle Core tags
-import { Deck, Slide, Layout, Fill, Image } from "spectacle";
+import { Deck, Slide, Layout, Fill, Image, Notes } from "spectacle";
 
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
@@ -31,7 +31,8 @@ const markdownRenderers = {
   paragraph: mdText,
   heading: mdHeadings,
   list: mdList,
-  listItem: mdListItem
+  listItem: mdListItem,
+  link: mdLink
 };
 
 const theme = createTheme(
@@ -63,7 +64,7 @@ export default class Presentation extends React.Component {
         contentWidth={1500}
       >
         {slides.map(slide => {
-          const { content, backgroundImage, logoImg } = slide;
+          const { content, notes, backgroundImage, logoImg } = slide;
           if (!logoImg) {
             return (
               <Slide
@@ -71,6 +72,9 @@ export default class Presentation extends React.Component {
                 bgColor="quartenary"
                 bgImage={backgroundImage ? backgroundImage.url : ""}
               >
+                <Notes>
+                  <h1>{notes}</h1>
+                </Notes>
                 <ReactMarkdown
                   source={content}
                   renderers={markdownRenderers}
@@ -81,10 +85,25 @@ export default class Presentation extends React.Component {
           } else {
             return (
               <Slide
-                transition={["spin", "fade"]}
+                transition={[
+                  "fade",
+                  (transitioning, forward) => {
+                    const angle = forward ? -180 : 180;
+                    return {
+                      transform: `
+                      translate3d(0%, ${transitioning ? 100 : 0}%, 0)
+                      rotate(${transitioning ? angle : 0}deg)
+                    `,
+                      backgroundColor: transitioning ? "#D9707B" : "#343E91"
+                    };
+                  }
+                ]}
                 bgColor="quartenary"
                 bgImage={backgroundImage ? backgroundImage.url : ""}
               >
+                <Notes>
+                  <h1>{notes}</h1>
+                </Notes>
                 <Layout>
                   <Fill>
                     <StyledImage
